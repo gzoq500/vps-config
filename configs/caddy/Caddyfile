@@ -1,0 +1,23 @@
+:80 {
+    redir https://{host}{uri} permanent
+}
+
+:4443 {
+    tls internal {
+        protocols tls1.2 tls1.3
+    }
+
+    # DNS-over-HTTPS (DoH) - RFC 8484
+    @doh {
+        path /dns-query
+        header Content-Type application/dns-message
+    }
+    handle @doh {
+        reverse_proxy 127.0.0.1:3000
+    }
+
+    # AdGuard web panel
+    handle {
+        reverse_proxy 127.0.0.1:3000
+    }
+}

@@ -1,0 +1,10 @@
+*.sqlite
+*.db
+*.bak
+*.bak.*
+*.lock
+__pycache__/
+*.pyc
+.env
+*.key
+*.pem

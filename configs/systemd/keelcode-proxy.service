@@ -1,0 +1,14 @@
+[Unit]
+Description=Keelcode Proxy (OpenAI to Anthropic translator)
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root
+ExecStart=/usr/bin/python3 /root/keelcode_proxy.py 3456 0.0.0.0
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

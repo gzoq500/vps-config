@@ -1,0 +1,20 @@
+[Unit]
+Description=AdGuard Home: Network-level blocker
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# Do NOT add -p/--web-addr here: AdGuardHome.yaml owns every port.
+# The bundled `AdGuardHome -s install` writes "-p <port> -s run", which makes the
+# binary treat the flag as the WEB UI port and exit 1 in a restart loop.
+ExecStart=/opt/AdGuardHome/AdGuardHome --no-check-update
+WorkingDirectory=/opt/AdGuardHome
+Restart=always
+RestartSec=5
+StandardOutput=append:/var/log/adguard.log
+StandardError=append:/var/log/adguard.log
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target

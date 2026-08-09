@@ -1,0 +1,32 @@
+http:
+  address: 127.0.0.1:3000
+  session_ttl: 30d
+  doh:
+    enabled: false
+users:
+  - name: golem
+    password: $2a$10$xQWE/KAUTjYtqebN7DhBoOT82iknLzuEabDQLq0Ya17n1rEXowhW2
+dns:
+  bind_hosts:
+    - 0.0.0.0
+  port: 53
+  upstream_dns:
+    - 127.0.0.1:5335
+  bootstrap_dns:
+    - 127.0.0.1:5335
+  ratelimit: 20
+  dnssec_enabled: true
+  cache_enabled: true
+  cache_size: 4194304
+querylog:
+  enabled: true
+  interval: 2160h
+statistics:
+  enabled: true
+  interval: 2160h
+filters:
+  - enabled: true
+    url: https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt
+    name: AdGuard DNS filter
+    id: 1
+schema_version: 34

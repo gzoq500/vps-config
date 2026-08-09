@@ -1,0 +1,67 @@
+http:
+  pprof:
+    port: 6060
+    enabled: false
+  doh:
+    routes:
+      - GET /dns-query
+      - POST /dns-query
+      - GET /dns-query/{ClientID}
+      - POST /dns-query/{ClientID}
+    insecure_enabled: false
+  address: 0.0.0.0:80
+  session_ttl: 30d
+users:
+  - name: golem
+    password: $2b$12$sO.vozbWxqoDgaxuWd8p3eYaXJ.6HPJSFwdSEtwGhArjDE4xjkMkq
+auth_attempts: 5
+block_auth_min: 15
+http_proxy: ""
+language: ""
+theme: auto
+dns:
+  bind_hosts:
+    - 0.0.0.0
+  port: 53
+  anonymize_client_ip: false
+  ratelimit: 20
+  upstream_dns:
+    - 127.0.0.1:443
+  upstream_dns_file: ""
+  bootstrap_dns:
+    - 9.9.9.9:53
+    - 149.112.112.112:53
+  all_servers: false
+  fastest_addr: false
+  fastest_timeout: 1s
+  protection_enabled: true
+  filtering_enabled: true
+  dnssec_enabled: true
+  cache_size: 4194304
+  log:
+    format: text
+    compress: false
+    max_backups: 0
+    max_size: 100
+    max_age: 3
+    file: ""
+    output: ""
+    interval: 24h
+  querylog:
+    format: text
+    compress: false
+    max_backups: 0
+    max_size: 100
+    max_age: 3
+    file: ""
+    output: ""
+    enabled: true
+    anonymize_client_ip: false
+  filters:
+    - id: 1
+      enabled: true
+      url: https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt
+      name: AdGuard DNS filter
+      rules_count: 0
+      last_updated: 0
+  schema_version: 27
